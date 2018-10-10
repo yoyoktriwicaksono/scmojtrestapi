@@ -30,17 +30,10 @@ public class ApiServer implements Runnable {
         final WebAppContext webAppContextApi = new WebAppContext(resourceBaseApi, "/api/");
         webAppContextApi.setDescriptor(xmlDescriptor);
 
-//        String resourceBaseUI = "src/main/ui";
-//        if (Files.notExists(Paths.get(resourceBaseUI))) {
-//            resourceBaseUI = ApiServer.class.getProtectionDomain().getCodeSource().getLocation().toExternalForm();
-//        }
-//        final WebAppContext webAppContextUI = new WebAppContext(resourceBaseUI, "/");
-
         server = new Server(port);
 
         final HandlerList handlers = new HandlerList();
         handlers.addHandler( webAppContextApi );
-//        handlers.addHandler( webAppContextUI );
 
         server.setHandler(handlers);
     }
