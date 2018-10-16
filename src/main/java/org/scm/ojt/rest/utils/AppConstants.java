@@ -6,4 +6,6 @@ package org.scm.ojt.rest.utils;
 public class AppConstants {
     public static final String SERVICEPACKAGE = "org.scm.ojt.rest.services";
     public static final String MODELPACKAGE = "org.scm.ojt.rest.model";
-                                                                        }
+    public final String JAVAXRS = "javax.ws.rs.Application";
+    public final String JERSEYCONFIG = "jersey.config.server.wadl.disableWadl";
+}

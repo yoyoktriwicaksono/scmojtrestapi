@@ -18,6 +18,7 @@ import java.util.Map;
  */
 public class ApiModule extends ServletModule {
 
+
     @Override
     protected void configureServlets() {
         bind(ConnectionManager.class).asEagerSingleton();
@@ -33,8 +34,8 @@ public class ApiModule extends ServletModule {
 
     private void initializeApplicationServlet() {
         final Map<String, String> props = new HashMap<>();
-        props.put("javax.ws.rs.Application", ApiApplication.class.getName());
-        props.put("jersey.config.server.wadl.disableWadl", "true");
+        props.put(AppConstants.JAVAXRS, ApiApplication.class.getName());
+        props.put(AppConstants.JERSEYCONFIG, Boolean.TRUE.toString());
         serve("/v1/*").with(ServletContainer.class, props);
     }
 
