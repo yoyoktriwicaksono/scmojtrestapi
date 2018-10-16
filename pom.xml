@@ -19,6 +19,7 @@
         <mongo-java.version>3.8.2</mongo-java.version>
         <morphia.version>1.3.2</morphia.version>
         <cfg4j.version>4.4.1</cfg4j.version>
+        <object-mapper.version>2.3.0</object-mapper.version>
         <!-- Build -->
         <shade.version>2.4.3</shade.version>
         <!-- Compiler -->
@@ -126,7 +127,12 @@
             <artifactId>cfg4j-git</artifactId>
             <version>${cfg4j.version}</version>
         </dependency>
-
+        <!--Object mapper-->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${object-mapper.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
