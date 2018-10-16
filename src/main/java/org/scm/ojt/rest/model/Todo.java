@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import java.util.UUID;
  * @author cluttered.code@gmail.com
  */
 @ApiModel(description = "a todo element")
+@Data
 public class Todo {
 
     @ApiModelProperty(dataType = "java.lang.String", value = "unique identifier", required = true, example = "89a1e095-1f42-4a1f-bde0-1824f3487538")
@@ -31,15 +33,15 @@ public class Todo {
         this.completed = completed;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public boolean isCompleted() {
-        return completed;
-    }
+//    public UUID getId() {
+//        return id;
+//    }
+//
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public boolean isCompleted() {
+//        return completed;
+//    }
 }

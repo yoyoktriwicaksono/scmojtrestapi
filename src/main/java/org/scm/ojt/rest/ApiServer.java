@@ -1,14 +1,30 @@
 package org.scm.ojt.rest;
 
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Key;
+import org.mongodb.morphia.Morphia;
 import org.scm.ojt.rest.config.ConfigurationManager;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.webapp.WebAppContext;
+import org.scm.ojt.rest.config.MongoConfigData;
+import org.scm.ojt.rest.dao.CustomerDAO;
+import org.scm.ojt.rest.entity.Account;
+import org.scm.ojt.rest.entity.Address;
+import org.scm.ojt.rest.entity.Customer;
+import org.scm.ojt.rest.utils.AppConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ApiServer implements Runnable {
 
@@ -57,6 +73,88 @@ public class ApiServer implements Runnable {
     }
 
     public static void main(final String[] args) {
+
+        Morphia morphia = new Morphia();
+        morphia.mapPackage("org.scm.ojt.rest.entity");
+        MongoConfigData mongoConfigData = ConfigurationManager.getInstance().getMongoConfigData();
+
+        ServerAddress addr = new ServerAddress(
+                mongoConfigData.host(),
+                mongoConfigData.port()
+        );
+        List<MongoCredential> credentialsList = new ArrayList<MongoCredential>();
+        MongoCredential credentia = MongoCredential.createCredential(
+                mongoConfigData.username(), mongoConfigData.database(), mongoConfigData.password().toCharArray());
+        credentialsList.add(credentia);
+        MongoClient client = new MongoClient(addr, credentialsList);
+
+        Datastore datastore = morphia.createDatastore(
+                client,
+                mongoConfigData.database()
+        );
+        datastore.ensureIndexes();
+
+//        String dbName = new String("bank");
+//        Mongo mongo = new Mongo();
+//        Datastore datastore = morphia.createDatastore(mongo, dbName);
+
+//        morphia.mapPackage("org.scm.ojt.rest.entity");
+
+        Address address = new Address();
+        address.setNumber("81");
+        address.setStreet("Mongo Street");
+        address.setTown("City");
+        address.setPostcode("CT81 1DB");
+
+        Account account = new Account();
+        account.setName("Personal Account");
+
+        List<Account> accounts = new ArrayList<Account>();
+        accounts.add(account);
+
+        Customer customer = new Customer();
+        customer.setAddress(address);
+        customer.setName("Mr Bank Customer");
+        customer.setAccounts(accounts);
+
+        Key<Customer> savedCustomer = datastore.save(customer);
+        System.out.println(savedCustomer.getId());
+
+        // WITH DAO
+        CustomerDAO customerDAO = new CustomerDAO(datastore);
+        Customer customerWithDAO = new Customer();
+        customerWithDAO.setAddress(address);
+        customerWithDAO.setName("Mr Bank Customer DAO");
+        customerWithDAO.setAccounts(accounts);
+
+        Key<Customer> savedCustomerWithDAO = customerDAO.save(customerWithDAO);
+        System.out.println(savedCustomerWithDAO.getId());
+
+//        ObjectId id = savedCustomerWithDAO.getId();
+        ObjectId oid = new ObjectId(savedCustomerWithDAO.getId().toString());
+        Customer savedCustomerWithDAOGet = customerDAO.get(oid);
+        System.out.println(savedCustomerWithDAOGet.getId());
+
+
+//        CustomerDAO customerDAO = new CustomerDAO(morphia, mongo, dbName);
+//        customerDAO.save(customer);
+//
+//        Query<Customer> query = datastore.createQuery(Customer.class);
+//        query.and(
+//                query.criteria("accounts.name").equal("Personal Account"),
+//                query.criteria("address.number").equal("81"),
+//                query.criteria("name").contains("Bank")
+//        );
+//
+//        QueryResults<Customer> retrievedCustomers =  customerDAO.find(query);
+//
+//        for (Customer retrievedCustomer : retrievedCustomers) {
+//            System.out.println(retrievedCustomer.getName());
+//            System.out.println(retrievedCustomer.getAddress().getPostcode());
+//            System.out.println(retrievedCustomer.getAccounts().get(0).getName());
+//            customerDAO.delete(retrievedCustomer);
+//        }
+
         final ApiServer server = new ApiServer(
                 ConfigurationManager.
                         getInstance().
@@ -65,4 +163,52 @@ public class ApiServer implements Runnable {
         );
         server.run();
     }
+
+//    public void testMorphia(){
+//        Morphia morphia = new Morphia();
+//        morphia.mapPackage("org.scm.ojt.rest.entity");
+//        MongoConfigData mongoConfigData = ConfigurationManager.getInstance().getMongoConfigData();
+//
+//        ServerAddress addr = new ServerAddress(
+//                mongoConfigData.host(),
+//                mongoConfigData.port()
+//        );
+//        List<MongoCredential> credentialsList = new ArrayList<MongoCredential>();
+//        MongoCredential credentia = MongoCredential.createCredential(
+//                mongoConfigData.username(), mongoConfigData.database(), mongoConfigData.password().toCharArray());
+//        credentialsList.add(credentia);
+//        MongoClient client = new MongoClient(addr, credentialsList);
+//
+//        Datastore datastore = morphia.createDatastore(
+//                client,
+//                mongoConfigData.database()
+//        );
+//        datastore.ensureIndexes();
+//
+////        String dbName = new String("bank");
+////        Mongo mongo = new Mongo();
+////        Datastore datastore = morphia.createDatastore(mongo, dbName);
+//
+//        morphia.mapPackage("com.city81.mongodb.morphia.entity");
+//
+//        Address address = new Address();
+//        address.setNumber("81");
+//        address.setStreet("Mongo Street");
+//        address.setTown("City");
+//        address.setPostcode("CT81 1DB");
+//
+//        Account account = new Account();
+//        account.setName("Personal Account");
+//
+//        List<Account> accounts = new ArrayList<Account>();
+//        accounts.add(account);
+//
+//        Customer customer = new Customer();
+//        customer.setAddress(address);
+//        customer.setName("Mr Bank Customer");
+//        customer.setAccounts(accounts);
+//
+//        Key<Customer> savedCustomer = datastore.save(customer);
+//        System.out.println(savedCustomer.getId());
+//    }
 }

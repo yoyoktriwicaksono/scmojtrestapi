@@ -20,8 +20,9 @@ public class SupplierLogic {
     }
 
     public Supplier createSupplier(Supplier supplier){
-        Key key = supplierDAO.createSupplier(supplier);
-        Supplier supplierResponse = supplierDAO.getSupplierByID(key);
+        Key<Supplier> key = supplierDAO.createSupplier(supplier);
+        //Supplier supplierResponse = supplierDAO.getSupplierByID(key);
+        Supplier supplierResponse = supplierDAO.getByKey(key);
         return supplierResponse;
     }
 }

@@ -1,8 +1,11 @@
 package org.scm.ojt.rest.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Getter;
+//import org.bson.types.ObjectId;
 import org.bson.types.ObjectId;
+import org.mongodb.morphia.Key;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Version;
@@ -14,14 +17,16 @@ import org.mongodb.morphia.annotations.Version;
 public abstract class BaseCollection {
     @Id
     @Property("id")
-    private ObjectId id;
+    @ApiModelProperty(dataType = "java.lang.String", value = "unique identifier", required = true, example = "89a1e095-1f42-4a1f-bde0-1824f3487538")
+    protected ObjectId id;
 
     @Version
     @Property("version")
-    private Long version;
+    @ApiModelProperty(dataType = "java.lang.String", value = "unique identifier", required = false, example = "1")
+    protected Long version;
 
-//    public String getID(){
-//        return getID().toString();
-//    }
+    protected String getObjectId(){
+        return getId().toString();
+    }
 
 }

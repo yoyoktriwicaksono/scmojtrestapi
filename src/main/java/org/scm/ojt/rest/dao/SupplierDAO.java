@@ -32,4 +32,8 @@ public class SupplierDAO {
         final Query<Supplier> query = connectionManager.getDatastore().createQuery(Supplier.class);
         return query.filter("_id =", id).get();
     }
+
+    public Supplier getByKey(Key key){
+        return  connectionManager.getDatastore().getByKey(Supplier.class,key);
+    }
 }
