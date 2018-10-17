@@ -19,7 +19,7 @@ import java.util.UUID;
 public class CustomerDTO extends BaseDTO {
     @ApiModelProperty(dataType = "java.lang.String" ,value = "Name", required = true, example = "Nama Customer")
     private String name;
-    private List<Account> accounts;
+    private List<AccountDTO> accounts;
     private Address address;
 
     @JsonCreator
@@ -30,7 +30,7 @@ public class CustomerDTO extends BaseDTO {
     public CustomerDTO(
             @JsonProperty("id") final String id,
             @JsonProperty("name") final String name,
-            @JsonProperty("accounts") final List<Account> accounts,
+            @JsonProperty("accounts") final List<AccountDTO> accounts,
             @JsonProperty("address") final Address address
     ) {
         this.setId(id);
