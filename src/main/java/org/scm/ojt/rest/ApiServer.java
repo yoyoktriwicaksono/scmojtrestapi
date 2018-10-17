@@ -5,6 +5,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import org.bson.types.ObjectId;
+import org.modelmapper.ModelMapper;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Key;
 import org.mongodb.morphia.Morphia;
@@ -14,6 +15,7 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.scm.ojt.rest.config.MongoConfigData;
 import org.scm.ojt.rest.dao.CustomerDAO;
+import org.scm.ojt.rest.dto.CustomerDTO;
 import org.scm.ojt.rest.entity.Account;
 import org.scm.ojt.rest.entity.Address;
 import org.scm.ojt.rest.entity.Customer;
@@ -135,6 +137,9 @@ public class ApiServer implements Runnable {
         Customer savedCustomerWithDAOGet = customerDAO.get(oid);
         System.out.println(savedCustomerWithDAOGet.getId());
 
+        ModelMapper modelMapper = new ModelMapper();
+        CustomerDTO customerDTO = modelMapper.map(savedCustomerWithDAOGet, CustomerDTO.class);
+        System.out.println(customerDTO.getId());
 
 //        CustomerDAO customerDAO = new CustomerDAO(morphia, mongo, dbName);
 //        customerDAO.save(customer);
