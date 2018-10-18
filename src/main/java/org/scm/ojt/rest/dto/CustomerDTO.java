@@ -20,7 +20,7 @@ public class CustomerDTO extends BaseDTO {
     @ApiModelProperty(dataType = "java.lang.String" ,value = "Name", required = true, example = "Nama Customer")
     private String name;
     private List<AccountDTO> accounts;
-    private Address address;
+    private AddressDTO address;
 
     @JsonCreator
     public CustomerDTO(){
@@ -31,7 +31,7 @@ public class CustomerDTO extends BaseDTO {
             @JsonProperty("id") final String id,
             @JsonProperty("name") final String name,
             @JsonProperty("accounts") final List<AccountDTO> accounts,
-            @JsonProperty("address") final Address address
+            @JsonProperty("address") final AddressDTO address
     ) {
         this.setId(id);
         this.setName(name);
