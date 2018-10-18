@@ -1,5 +1,6 @@
 package org.scm.ojt.rest.services;
 
+import io.swagger.annotations.ApiParam;
 import org.scm.ojt.rest.logic.*;
 import org.scm.ojt.rest.model.Todo;
 //import com.google.inject.Inject;
@@ -60,7 +61,9 @@ public class TodoService {
     @GET
     @Path("{id}")
     @ApiOperation(value="Fetch a todo item")
-    public Todo getTodo(@PathParam("id") final UUID id) {
+    public Todo getTodo(
+            @ApiParam(value = "Todo Id", required = true) @PathParam("id") final UUID id
+    ) {
         final Todo todo = data.get(id);
         if(todo == null)
             throw new NotFoundException("Todo '" + id + "' not found");
@@ -70,7 +73,10 @@ public class TodoService {
     @PUT
     @Path("{id}")
     @ApiOperation(value="Update a todo item")
-    public Todo updateTodo(@PathParam("id") final UUID id, final Todo todo) {
+    public Todo updateTodo(
+            @ApiParam(value = "Todo Id", required = true) @PathParam("id") final UUID id,
+            @ApiParam(value = "New Todo", required = true) final Todo todo
+    ) {
         if(data.get(id) == null)
             throw new NotFoundException("Todo '" + id + "' not found");
         final Todo updateTodo = new Todo(id, todo.getDescription(), todo.isCompleted());
