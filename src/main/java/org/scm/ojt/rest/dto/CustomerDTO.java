@@ -2,6 +2,7 @@ package org.scm.ojt.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -9,10 +10,13 @@ import lombok.Data;
  */
 @Data
 public class CustomerDTO extends BaseDTO {
+    @ApiModelProperty(dataType = "java.lang.String" ,value = "name", example = "Yoyok Tri Wicaksono")
     private String name;
 
+    @ApiModelProperty(dataType = "java.lang.String" ,value = "phoneNumber", example = "08123456789")
     private String phoneNumber;
 
+    @ApiModelProperty(dataType = "java.lang.String" ,value = "email", example = "test@gmail.com")
     private String email;
 
     private AddressDTO address;
