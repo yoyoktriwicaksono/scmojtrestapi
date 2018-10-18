@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public abstract class BaseDTO {
     @ApiModelProperty(dataType = "java.lang.String" ,value = "id", required = true, example = "5bc5bded152608f1245d2636")
-    private String id;
+    protected String id;
     @ApiModelProperty(dataType = "java.lang.Long" ,value = "version", required = true, example = "1")
-    private Long version;
+    protected Long version;
 }
