@@ -20,6 +20,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.*;
 
 /**
  * Created by Yoyok_T on 17/10/2018.
