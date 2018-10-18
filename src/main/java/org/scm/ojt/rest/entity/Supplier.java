@@ -16,7 +16,7 @@ import org.mongodb.morphia.annotations.*;
 )
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Supplier extends BaseCollection {
+public class Supplier extends BaseEntity {
 
     @ApiModelProperty(value = "SupplierID", required = true, example = "S001")
     @Property("supplierID")
