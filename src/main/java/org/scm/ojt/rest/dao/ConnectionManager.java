@@ -23,7 +23,7 @@ public class ConnectionManager {
     public ConnectionManager(){
         // tell Morphia where to find your classes
         // can be called multiple times with different packages or classes
-        morphia.mapPackage(AppConstants.MODELPACKAGE);
+        morphia.mapPackage(AppConstants.ENTITYPACKAGE);
 
         // create the Datastore connecting to the default port on the local host
         MongoConfigData mongoConfigData = ConfigurationManager.getInstance().getMongoConfigData();
