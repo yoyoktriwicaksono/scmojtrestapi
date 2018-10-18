@@ -5,14 +5,7 @@ import lombok.*;
 /**
  * Created by Yoyok_T on 17/10/2018.
  */
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@Builder
+@Data
 public class AccountDTO extends BaseDTO {
     private String name;
 
