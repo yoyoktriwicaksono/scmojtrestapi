@@ -1,8 +1,7 @@
 package org.scm.ojt.rest.model;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 //import org.bson.types.ObjectId;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Key;
@@ -13,7 +12,14 @@ import org.mongodb.morphia.annotations.Version;
 /**
  * Created by Wicaksono on 10/11/2018.
  */
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Builder
 public abstract class BaseCollection {
     @Id
     @Property("id")
