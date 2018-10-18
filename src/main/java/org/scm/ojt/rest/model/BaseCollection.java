@@ -12,14 +12,7 @@ import org.mongodb.morphia.annotations.Version;
 /**
  * Created by Wicaksono on 10/11/2018.
  */
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@Builder
+@Data
 public abstract class BaseCollection {
     @Id
     @Property("id")
