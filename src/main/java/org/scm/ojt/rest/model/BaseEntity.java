@@ -23,19 +23,4 @@ public abstract class BaseEntity {
         super();
     }
 
-//    public ObjectId getId() {
-//        return id;
-//    }
-//
-//    public void setId(ObjectId id) {
-//        this.id = id;
-//    }
-//
-//    public Long getVersion() {
-//        return version;
-//    }
-//
-//    public void setVersion(Long version) {
-//        this.version = version;
-//    }
 }
