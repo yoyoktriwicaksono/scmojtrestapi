@@ -1,7 +1,6 @@
-package org.scm.ojt.rest.model;
+package org.scm.ojt.rest.entity;
 
 import lombok.Data;
-import lombok.Getter;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;

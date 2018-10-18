@@ -1,6 +1,6 @@
 package org.scm.ojt.rest.dao;
 
-import org.scm.ojt.rest.model.Employee;
+import org.scm.ojt.rest.entity.Employee;
 import javax.inject.Inject;
 
 /**

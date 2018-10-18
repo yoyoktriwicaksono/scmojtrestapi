@@ -2,8 +2,7 @@ package org.scm.ojt.rest.logic;
 
 import org.mongodb.morphia.Key;
 import org.scm.ojt.rest.dao.SupplierDAO;
-import org.scm.ojt.rest.dao.TestDAO;
-import org.scm.ojt.rest.model.Supplier;
+import org.scm.ojt.rest.entity.Supplier;
 
 import javax.inject.Inject;
 import java.util.List;

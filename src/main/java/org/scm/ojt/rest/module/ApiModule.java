@@ -16,9 +16,6 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author cluttered.code@gmail.com
- */
 public class ApiModule extends ServletModule {
     private static final Logger LOG = LoggerFactory.getLogger(ApiModule.class);
 

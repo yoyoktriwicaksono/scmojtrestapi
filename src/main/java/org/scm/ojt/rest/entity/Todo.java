@@ -1,4 +1,4 @@
-package org.scm.ojt.rest.model;
+package org.scm.ojt.rest.entity;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

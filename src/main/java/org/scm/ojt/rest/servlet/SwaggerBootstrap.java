@@ -8,9 +8,6 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-/**
- * @author cluttered.code@gmail.com
- */
 @Singleton
 public class SwaggerBootstrap extends HttpServlet {
 

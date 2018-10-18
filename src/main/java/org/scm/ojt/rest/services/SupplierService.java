@@ -4,18 +4,13 @@ import com.google.inject.Singleton;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.scm.ojt.rest.logic.SupplierLogic;
-import org.scm.ojt.rest.logic.TestLogic;
-import org.scm.ojt.rest.model.Supplier;
-import org.scm.ojt.rest.model.Todo;
+import org.scm.ojt.rest.entity.Supplier;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 /**
  * Created by Yoyok_T on 11/10/2018.
