@@ -2,10 +2,12 @@ package org.scm.ojt.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 /**
  * Created by Yoyok_T on 18/10/2018.
  */
+@Data
 public class CustomerDTO extends BaseDTO {
     private String name;
 
