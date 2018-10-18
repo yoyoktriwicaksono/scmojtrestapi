@@ -20,6 +20,7 @@ public class ConfigurationManager {
     static ConfigurationManager instance;
     private AppConfigData appConfigData = null;
     private MongoConfigData mongoConfigData = null;
+    private SwaggerConfigData swaggerConfigData = null;
 
     private ConfigurationManager(){
         // Specify which files to load. Configuration from both files will be merged.
@@ -41,6 +42,7 @@ public class ConfigurationManager {
 
         logger.info("Load app.properties");
         appConfigData = configProvider.bind("app", AppConfigData.class);
+        swaggerConfigData = configProvider.bind("swagger", SwaggerConfigData.class);
         logger.info("Load database.properties");
         mongoConfigData = configProvider.bind("mongo", MongoConfigData.class);
         // this.mysqlConfigData = configProvider.bind("mysql", MysqlConfigData.class);
@@ -65,5 +67,9 @@ public class ConfigurationManager {
 
     public MongoConfigData getMongoConfigData(){
         return mongoConfigData;
+    }
+
+    public SwaggerConfigData getSwaggerConfigData(){
+        return swaggerConfigData;
     }
 }
