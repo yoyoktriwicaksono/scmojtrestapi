@@ -1,5 +1,6 @@
 package org.scm.ojt.rest.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 /**
@@ -7,6 +8,7 @@ import lombok.*;
  */
 @Data
 public class AccountDTO extends BaseDTO {
+    @ApiModelProperty(dataType = "java.lang.String" ,value = "Name", example = "Pemilik Account")
     private String name;
 
 }

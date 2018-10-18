@@ -76,25 +76,25 @@ public class ApiServer implements Runnable {
 
     public static void main(final String[] args) {
 
-        Morphia morphia = new Morphia();
-        morphia.mapPackage("org.scm.ojt.rest.entity");
-        MongoConfigData mongoConfigData = ConfigurationManager.getInstance().getMongoConfigData();
-
-        ServerAddress addr = new ServerAddress(
-                mongoConfigData.host(),
-                mongoConfigData.port()
-        );
-        List<MongoCredential> credentialsList = new ArrayList<MongoCredential>();
-        MongoCredential credentia = MongoCredential.createCredential(
-                mongoConfigData.username(), mongoConfigData.database(), mongoConfigData.password().toCharArray());
-        credentialsList.add(credentia);
-        MongoClient client = new MongoClient(addr, credentialsList);
-
-        Datastore datastore = morphia.createDatastore(
-                client,
-                mongoConfigData.database()
-        );
-        datastore.ensureIndexes();
+//        Morphia morphia = new Morphia();
+//        morphia.mapPackage("org.scm.ojt.rest.entity");
+//        MongoConfigData mongoConfigData = ConfigurationManager.getInstance().getMongoConfigData();
+//
+//        ServerAddress addr = new ServerAddress(
+//                mongoConfigData.host(),
+//                mongoConfigData.port()
+//        );
+//        List<MongoCredential> credentialsList = new ArrayList<MongoCredential>();
+//        MongoCredential credentia = MongoCredential.createCredential(
+//                mongoConfigData.username(), mongoConfigData.database(), mongoConfigData.password().toCharArray());
+//        credentialsList.add(credentia);
+//        MongoClient client = new MongoClient(addr, credentialsList);
+//
+//        Datastore datastore = morphia.createDatastore(
+//                client,
+//                mongoConfigData.database()
+//        );
+//        datastore.ensureIndexes();
 
 //        String dbName = new String("bank");
 //        Mongo mongo = new Mongo();
@@ -102,44 +102,44 @@ public class ApiServer implements Runnable {
 
 //        morphia.mapPackage("org.scm.ojt.rest.entity");
 
-        Address address = new Address();
-        address.setNumber("81");
-        address.setStreet("Mongo Street");
-        address.setTown("City");
-        address.setPostcode("CT81 1DB");
-
-        Account account = new Account();
-        account.setName("Personal Account");
-
-        List<Account> accounts = new ArrayList<Account>();
-        accounts.add(account);
-
-        Customer customer = new Customer();
-        customer.setAddress(address);
-        customer.setName("Mr Bank Customer");
-        customer.setAccounts(accounts);
-
-        Key<Customer> savedCustomer = datastore.save(customer);
-        System.out.println(savedCustomer.getId());
-
-        // WITH DAO
-        CustomerDAO customerDAO = new CustomerDAO(datastore);
-        Customer customerWithDAO = new Customer();
-        customerWithDAO.setAddress(address);
-        customerWithDAO.setName("Mr Bank Customer DAO");
-        customerWithDAO.setAccounts(accounts);
-
-        Key<Customer> savedCustomerWithDAO = customerDAO.save(customerWithDAO);
-        System.out.println(savedCustomerWithDAO.getId());
-
-//        ObjectId id = savedCustomerWithDAO.getId();
-        ObjectId oid = new ObjectId(savedCustomerWithDAO.getId().toString());
-        Customer savedCustomerWithDAOGet = customerDAO.get(oid);
-        System.out.println(savedCustomerWithDAOGet.getId());
-
-        ModelMapper modelMapper = new ModelMapper();
-        CustomerDTO customerDTO = modelMapper.map(savedCustomerWithDAOGet, CustomerDTO.class);
-        System.out.println(customerDTO.getId());
+//        Address address = new Address();
+//        address.setNumber("81");
+//        address.setStreet("Mongo Street");
+//        address.setTown("City");
+//        address.setPostcode("CT81 1DB");
+//
+//        Account account = new Account();
+//        account.setName("Personal Account");
+//
+//        List<Account> accounts = new ArrayList<Account>();
+//        accounts.add(account);
+//
+//        Customer customer = new Customer();
+//        customer.setAddress(address);
+//        customer.setName("Mr Bank Customer");
+//        customer.setAccounts(accounts);
+//
+//        Key<Customer> savedCustomer = datastore.save(customer);
+//        System.out.println(savedCustomer.getId());
+//
+//        // WITH DAO
+//        CustomerDAO customerDAO = new CustomerDAO(datastore);
+//        Customer customerWithDAO = new Customer();
+//        customerWithDAO.setAddress(address);
+//        customerWithDAO.setName("Mr Bank Customer DAO");
+//        customerWithDAO.setAccounts(accounts);
+//
+//        Key<Customer> savedCustomerWithDAO = customerDAO.save(customerWithDAO);
+//        System.out.println(savedCustomerWithDAO.getId());
+//
+////        ObjectId id = savedCustomerWithDAO.getId();
+//        ObjectId oid = new ObjectId(savedCustomerWithDAO.getId().toString());
+//        Customer savedCustomerWithDAOGet = customerDAO.get(oid);
+//        System.out.println(savedCustomerWithDAOGet.getId());
+//
+//        ModelMapper modelMapper = new ModelMapper();
+//        CustomerDTO customerDTO = modelMapper.map(savedCustomerWithDAOGet, CustomerDTO.class);
+//        System.out.println(customerDTO.getId());
 
 //        CustomerDAO customerDAO = new CustomerDAO(morphia, mongo, dbName);
 //        customerDAO.save(customer);
