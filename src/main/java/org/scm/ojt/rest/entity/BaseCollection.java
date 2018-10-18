@@ -1,4 +1,4 @@
-package org.scm.ojt.rest.model;
+package org.scm.ojt.rest.entity;
 
 import lombok.Data;
 import org.bson.types.ObjectId;
@@ -7,20 +7,20 @@ import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Version;
 
 /**
- * Created by Yoyok_T on 28/09/2018.
+ * Created by Wicaksono on 10/11/2018.
  */
 @Data
-public abstract class BaseEntity {
+public abstract class BaseCollection {
     @Id
     @Property("id")
-    protected ObjectId id;
+    private ObjectId id;
 
     @Version
     @Property("version")
     private Long version;
 
-    public BaseEntity() {
-        super();
-    }
+//    public String getID(){
+//        return getID().toString();
+//    }
 
 }

@@ -7,9 +7,6 @@ import com.google.inject.servlet.GuiceServletContextListener;
 
 import javax.servlet.annotation.WebListener;
 
-/**
- * @author cluttered.code@gmail.com
- */
 @WebListener
 public class GuiceContextListener extends GuiceServletContextListener {
 

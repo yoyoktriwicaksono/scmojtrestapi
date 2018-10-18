@@ -1,8 +1,7 @@
 package org.scm.ojt.rest.services;
 
 import org.scm.ojt.rest.logic.TestLogic;
-import org.scm.ojt.rest.model.EntityModel;
-import org.scm.ojt.rest.model.Todo;
+import org.scm.ojt.rest.entity.EntityModel;
 import com.google.inject.Singleton;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,9 +13,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Created by Yoyok_T on 28/09/2018.

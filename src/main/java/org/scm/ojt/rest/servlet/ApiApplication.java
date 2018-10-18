@@ -13,9 +13,6 @@ import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.scm.ojt.rest.utils.AppConstants;
 
-/**
- * @author cluttered.code@gmail.com
- */
 public class ApiApplication extends ResourceConfig {
 
     public ApiApplication() {
@@ -27,17 +24,6 @@ public class ApiApplication extends ResourceConfig {
                 GuiceIntoHK2Bridge guiceBridge = serviceLocator.getService(GuiceIntoHK2Bridge.class);
                 Injector injector = (Injector) servletContainer.getServletContext().getAttribute(Injector.class.getName());
                 guiceBridge.bridgeGuiceInjector(injector);
-
-//                final Morphia morphia = new Morphia();
-//
-//                // tell Morphia where to find your classes
-//                // can be called multiple times with different packages or classes
-//                morphia.mapPackage("com.clutteredcode.rest.model");
-//
-//                // create the Datastore connecting to the default port on the local host
-//                final Datastore datastore = morphia.createDatastore(new MongoClient("localhost", 27017), "morphia_example");
-//                datastore.ensureIndexes();
-
             }
             public void onReload(Container container) {
             }

@@ -27,9 +27,6 @@ public class ConfigurationManager {
         ConfigFilesProvider configFilesProvider = () -> Arrays.asList(
                 Paths.get("app.properties"),
                 Paths.get("database.properties")
-                // ,
-                // Paths.get("mysql.properties"),
-                // Paths.get("mongo.properties")
         );
 
         // Use classpath as configuration store
@@ -45,8 +42,6 @@ public class ConfigurationManager {
         swaggerConfigData = configProvider.bind("swagger", SwaggerConfigData.class);
         logger.info("Load database.properties");
         mongoConfigData = configProvider.bind("mongo", MongoConfigData.class);
-        // this.mysqlConfigData = configProvider.bind("mysql", MysqlConfigData.class);
-        // this.mongoConfigData = configProvider.bind("app", MongoConfigData.class);
     }
 
     public static ConfigurationManager getInstance(){

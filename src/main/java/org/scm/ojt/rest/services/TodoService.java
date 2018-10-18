@@ -1,7 +1,7 @@
 package org.scm.ojt.rest.services;
 
 import org.scm.ojt.rest.logic.*;
-import org.scm.ojt.rest.model.Todo;
+import org.scm.ojt.rest.entity.Todo;
 //import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import io.swagger.annotations.Api;

@@ -42,20 +42,29 @@ public class ConnectionManager {
 
          */
 
-        ServerAddress addr = new ServerAddress(
-                mongoConfigData.host(),
-                mongoConfigData.port()
-        );
-        List<MongoCredential> credentialsList = new ArrayList<MongoCredential>();
-        MongoCredential credentia = MongoCredential.createCredential(
-                mongoConfigData.username(), mongoConfigData.database(), mongoConfigData.password().toCharArray());
-        credentialsList.add(credentia);
-        MongoClient client = new MongoClient(addr, credentialsList);
+        if (mongoConfigData.username().isEmpty() && mongoConfigData.password().isEmpty()) {
+            datastore = morphia.createDatastore(
+                    new MongoClient(
+                            mongoConfigData.host(),
+                            mongoConfigData.port()),
+                    mongoConfigData.database()
+            );
+        } else {
+            ServerAddress addr = new ServerAddress(
+                    mongoConfigData.host(),
+                    mongoConfigData.port()
+            );
+            List<MongoCredential> credentialsList = new ArrayList<MongoCredential>();
+            MongoCredential credential = MongoCredential.createCredential(
+                    mongoConfigData.username(), mongoConfigData.database(), mongoConfigData.password().toCharArray());
+            credentialsList.add(credential);
+            MongoClient client = new MongoClient(addr, credentialsList);
 
-        datastore = morphia.createDatastore(
-                client,
-                mongoConfigData.database()
-        );
+            datastore = morphia.createDatastore(
+                    client,
+                    mongoConfigData.database()
+            );
+        }
         datastore.ensureIndexes();
 
     }

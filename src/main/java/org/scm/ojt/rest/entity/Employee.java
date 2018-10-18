@@ -1,4 +1,4 @@
-package org.scm.ojt.rest.model;
+package org.scm.ojt.rest.entity;
 
 import lombok.Data;
 import org.bson.types.ObjectId;
