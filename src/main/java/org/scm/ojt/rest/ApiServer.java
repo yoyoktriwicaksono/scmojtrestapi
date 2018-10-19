@@ -57,12 +57,12 @@ public class ApiServer implements Runnable {
     }
 
     public static void main(final String[] args) {
-        final ApiServer server = new ApiServer(
-                ConfigurationManager.
-                        getInstance().
-                        getAppConfigData().
-                        port()
-        );
+        LOG.info("Heroku PORT = "+System.getenv("PORT"));
+        String webPort = System.getenv("PORT");
+        if(webPort == null || webPort.isEmpty()) {
+            webPort = ConfigurationManager.getInstance().getAppConfigData().port().toString();
+        }
+        final ApiServer server = new ApiServer(Integer.valueOf(webPort));
         server.run();
     }
 }
