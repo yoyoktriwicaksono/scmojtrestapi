@@ -15,4 +15,11 @@
 I use circleCI for continues integration
 
 ## Continues Deployment
-I use heroku for continues Deployment (but still no luck since i got application error :D
+I use heroku for continues Deployment (but still no luck since i got application error :D )
+
+## Issues
+Please refer to Issue tab of github in this repository
+
+## Project
+Please refer to OJT project of project tab in this repository
+
