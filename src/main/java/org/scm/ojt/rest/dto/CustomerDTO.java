@@ -2,12 +2,14 @@ package org.scm.ojt.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
  * Created by Yoyok_T on 18/10/2018.
  */
+@ApiModel(description = "Customer")
 @Data
 public class CustomerDTO extends BaseDTO {
     @ApiModelProperty(dataType = "java.lang.String" ,value = "name", example = "Yoyok Tri Wicaksono")
