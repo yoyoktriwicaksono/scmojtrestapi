@@ -57,12 +57,15 @@ public class ApiServer implements Runnable {
     }
 
     public static void main(final String[] args) {
-        final ApiServer server = new ApiServer(
-                ConfigurationManager.
-                        getInstance().
-                        getAppConfigData().
-                        port()
-        );
+        LOG.info("property = "+System.getProperty("port"));
+        LOG.info("env = "+System.getenv("port"));
+//        final ApiServer server = new ApiServer(
+//                ConfigurationManager.
+//                        getInstance().
+//                        getAppConfigData().
+//                        port()
+//        );
+        final ApiServer server = new ApiServer(0);
         server.run();
     }
 }
