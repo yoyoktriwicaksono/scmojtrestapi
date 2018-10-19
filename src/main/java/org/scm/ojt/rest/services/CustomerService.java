@@ -95,4 +95,29 @@ public class CustomerService {
         }
         return customers;
     }
+
+//    @GET
+//    @Path("{id}")
+//    @ApiOperation(value="Get Supplier", response = SupplierDTO.class)
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 400, message = "Invalid ID"),
+//            @ApiResponse(code = 404, message = "Supplier Not Found"),
+//            @ApiResponse(code = 500, message = "Something wrong in Server")
+//    })
+//    public Response getById(
+//            @ApiParam(value = "id", required = true) @PathParam("id") final String id
+//    ) throws NotFoundException {
+//        if (supplierLogic.getObjectId(id) != null) {
+//            SupplierDTO supplierDTO = supplierLogic.getById(id);
+//            if (supplierDTO != null) {
+//                return Response.ok().entity(supplierDTO).build();
+//            } else {
+//                throw new NotFoundException(404, "Supplier Not Found");
+//            }
+//        } else {
+//            throw new NotFoundException(400, "Invalid ID");
+//        }
+//    }
+
+
 }
