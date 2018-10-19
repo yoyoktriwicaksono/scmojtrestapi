@@ -44,6 +44,7 @@ public class SupplierDTO extends BaseDTO {
     ){
         this.id = id;
         this.version = version;
+        this.supplierID = supplierID;
         this.name = name;
         this.address = address;
         this.city = city;
