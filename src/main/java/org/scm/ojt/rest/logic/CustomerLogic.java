@@ -58,7 +58,7 @@ public class CustomerLogic {
     }
 
     public boolean deleteCustomer(String id){
-        ObjectId oid = new ObjectId(id.toString());
+        ObjectId oid = new ObjectId(id);
         Customer customer = customerDAO.get(oid);
         // or we can use deleteById, this call more efficient since it is no need to get first
         WriteResult result = customerDAO.delete(customer);
