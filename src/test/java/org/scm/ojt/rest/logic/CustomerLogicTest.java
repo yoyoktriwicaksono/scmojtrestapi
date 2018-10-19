@@ -20,10 +20,10 @@ public class CustomerLogicTest {
         assertNotNull(test);
     }
 
-    @Test
-    public void testFail(){
-        String test = null;
-        assertNotNull(test);
-    }
+//    @Test
+//    public void testFail(){
+//        String test = null;
+//        assertNotNull(test);
+//    }
 
 }
