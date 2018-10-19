@@ -3,6 +3,7 @@ package org.scm.ojt.rest.logic;
 import com.mongodb.WriteResult;
 import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.mongodb.morphia.Key;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.QueryResults;
@@ -33,6 +34,7 @@ public class CustomerLogic {
     public CustomerLogic(ConnectionManager connectionManager, ModelMapper modelMapper){
         this.connectionManager = connectionManager;
         this.modelMapper = modelMapper;
+        this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         this.customerDAO = new CustomerDAO(this.connectionManager.getDatastore());
     }
 

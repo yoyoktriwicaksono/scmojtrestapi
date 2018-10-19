@@ -3,6 +3,7 @@ package org.scm.ojt.rest.logic;
 import com.mongodb.WriteResult;
 import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.mongodb.morphia.Key;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.QueryResults;
@@ -25,7 +26,7 @@ import java.util.List;
 /**
  * Created by Yoyok_T on 11/10/2018.
  */
-public class SupplierLogic {
+public class SupplierLogic extends BaseLogic {
     private static final Logger LOG = LoggerFactory.getLogger(CustomerLogic.class);
 
     private final ConnectionManager connectionManager;
@@ -36,6 +37,7 @@ public class SupplierLogic {
     public SupplierLogic(ConnectionManager connectionManager, ModelMapper modelMapper){
         this.connectionManager = connectionManager;
         this.modelMapper = modelMapper;
+        this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         this.supplierDAO = new SupplierDAO(this.connectionManager.getDatastore());
     }
 
