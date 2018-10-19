@@ -15,7 +15,7 @@
 I use circleCI for continues integration
 
 ## Continues Deployment
-I use heroku for continues Deployment (but still no luck since i got application error :D )
+I use heroku for continues Deployment. Please check https://scmojtrestapi.herokuapp.com/api/
 
 ## Issues
 Please refer to Issue tab of github in this repository
