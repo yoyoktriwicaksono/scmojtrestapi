@@ -57,15 +57,13 @@ public class ApiServer implements Runnable {
     }
 
     public static void main(final String[] args) {
-        LOG.info("property = "+System.getProperty("port"));
-        LOG.info("env = "+System.getenv("port"));
-//        final ApiServer server = new ApiServer(
-//                ConfigurationManager.
-//                        getInstance().
-//                        getAppConfigData().
-//                        port()
-//        );
-        final ApiServer server = new ApiServer(0);
+        LOG.info("property = "+System.getProperty("PORT"));
+        LOG.info("env = "+System.getenv("PORT"));
+        String webPort = System.getenv("PORT");
+        if(webPort == null || webPort.isEmpty()) {
+            webPort = ConfigurationManager.getInstance().getAppConfigData().port().toString();
+        }
+        final ApiServer server = new ApiServer(Integer.valueOf(webPort));
         server.run();
     }
 }
