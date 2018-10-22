@@ -46,7 +46,6 @@ public class SupplierServiceTest {
         when(supplierService.getById(anyObject())).thenReturn(supplierDTO);
         when(supplierService.createSupplier(anyObject())).thenReturn(supplierDTO);
         when(supplierService.updateSupplier(anyObject(), anyObject())).thenReturn(supplierDTO);
-        //when(customerService.deleteById(anyObject())).thenReturn(null);
         when(supplierLogic.deleteSupplier(anyObject())).thenReturn(true);
 
     }
