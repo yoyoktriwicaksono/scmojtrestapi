@@ -15,7 +15,10 @@
 I use circleCI for continues integration
 
 ## Continues Deployment
-I use heroku for continues Deployment. Please check https://scmojtrestapi.herokuapp.com/api/
+I use heroku for continues Deployment. 
+A pipeline is created for QA and Production deployment.
+1. scmojtrestapiqa pipeline is for QA. Please check https://scmojtrestapiqa.herokuapp.com/api/
+2. scmojtrestapi pipeline is for Production. Please check https://scmojtrestapi.herokuapp.com/api/
 
 ## Issues
 Please refer to Issue tab of github in this repository
