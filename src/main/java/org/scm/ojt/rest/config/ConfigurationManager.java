@@ -23,6 +23,10 @@ public class ConfigurationManager {
     private SwaggerConfigData swaggerConfigData = null;
 
     private ConfigurationManager(){
+        // we have to set the variable of heroku : STAGING : PRODUCTION or QA
+        String environment = System.getenv("STAGING");
+        logger.info("Load Heroku environment variable =  " + environment);
+
         // Specify which files to load. Configuration from both files will be merged.
         ConfigFilesProvider configFilesProvider = () -> Arrays.asList(
                 Paths.get("app.properties"),
