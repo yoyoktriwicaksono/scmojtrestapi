@@ -52,8 +52,11 @@ public class ApiModule extends ServletModule {
         String webPort = System.getenv("PORT");
         if(webPort == null || webPort.isEmpty()) {
             webPort = ConfigurationManager.getInstance().getAppConfigData().port().toString();
+            beanConfig.setHost(ConfigurationManager.getInstance().getAppConfigData().host() + ":" + webPort.toString());
+        } else {
+            // Heroku don't need port
+            beanConfig.setHost(ConfigurationManager.getInstance().getAppConfigData().host());
         }
-        beanConfig.setHost(ConfigurationManager.getInstance().getAppConfigData().host() + ":" + webPort.toString());
         beanConfig.setBasePath("/api/v1");
         beanConfig.setResourcePackage(AppConstants.SERVICEPACKAGE);
         beanConfig.setScan(true);
