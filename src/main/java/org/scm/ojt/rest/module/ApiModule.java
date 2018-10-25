@@ -45,16 +45,17 @@ public class ApiModule extends ServletModule {
         serve("").with(SwaggerBootstrap.class);
         BeanConfig beanConfig = new BeanConfig();
         beanConfig.setVersion(swaggerConfigData.version());
-        beanConfig.setSchemes(new String[]{"https"});
         beanConfig.setTitle(swaggerConfigData.title());
         beanConfig.setDescription(swaggerConfigData.description());
         LOG.info("Heroku PORT = "+System.getenv("PORT"));
         String webPort = System.getenv("PORT");
         if(webPort == null || webPort.isEmpty()) {
             webPort = ConfigurationManager.getInstance().getAppConfigData().port().toString();
+            beanConfig.setSchemes(new String[]{"http"});
             beanConfig.setHost(ConfigurationManager.getInstance().getAppConfigData().host() + ":" + webPort.toString());
         } else {
-            // Heroku don't need port
+            // Heroku don't need port and host shall be https
+            beanConfig.setSchemes(new String[]{"https"});
             beanConfig.setHost(ConfigurationManager.getInstance().getAppConfigData().host());
         }
         beanConfig.setBasePath("/api/v1");
