@@ -48,7 +48,12 @@ public class ApiModule extends ServletModule {
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setTitle(swaggerConfigData.title());
         beanConfig.setDescription(swaggerConfigData.description());
-        beanConfig.setHost(ConfigurationManager.getInstance().getAppConfigData().host() + ":" + ConfigurationManager.getInstance().getAppConfigData().port().toString());
+        LOG.info("Heroku PORT = "+System.getenv("PORT"));
+        String webPort = System.getenv("PORT");
+        if(webPort == null || webPort.isEmpty()) {
+            webPort = ConfigurationManager.getInstance().getAppConfigData().port().toString();
+        }
+        beanConfig.setHost(ConfigurationManager.getInstance().getAppConfigData().host() + ":" + webPort.toString());
         beanConfig.setBasePath("/api/v1");
         beanConfig.setResourcePackage(AppConstants.SERVICEPACKAGE);
         beanConfig.setScan(true);
