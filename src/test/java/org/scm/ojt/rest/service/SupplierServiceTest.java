@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.scm.ojt.rest.dto.CustomerDTO;
 import org.scm.ojt.rest.dto.SupplierDTO;
 import org.scm.ojt.rest.logic.SupplierLogic;
 import org.scm.ojt.rest.services.SupplierService;

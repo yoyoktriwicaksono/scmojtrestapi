@@ -23,11 +23,28 @@ public class ConfigurationManager {
     private SwaggerConfigData swaggerConfigData = null;
 
     private ConfigurationManager(){
-        // Specify which files to load. Configuration from both files will be merged.
+        // we have to set the variable of heroku : STAGING : PRODUCTION or QA
+        String environment = System.getenv("STAGING");
+        logger.info("Load Heroku environment variable =  " + environment);
         ConfigFilesProvider configFilesProvider = () -> Arrays.asList(
                 Paths.get("app.properties"),
                 Paths.get("database.properties")
         );
+
+        if (environment != null) {
+            // Specify which files to load. Configuration from both files will be merged.
+            if (environment.equalsIgnoreCase("PRODUCTION")) {
+                configFilesProvider = () -> Arrays.asList(
+                        Paths.get("app.production.properties"),
+                        Paths.get("database.production.properties")
+                );
+            } else if(environment.equalsIgnoreCase("QA")) {
+                configFilesProvider = () -> Arrays.asList(
+                        Paths.get("app.qa.properties"),
+                        Paths.get("database.qa.properties")
+                );
+            }
+        }
 
         // Use classpath as configuration store
         ConfigurationSource source = new ClasspathConfigurationSource(configFilesProvider);
