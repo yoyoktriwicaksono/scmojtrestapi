@@ -26,7 +26,11 @@ import org.slf4j.LoggerFactory;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class ApiServer implements Runnable {
 
@@ -159,6 +163,15 @@ public class ApiServer implements Runnable {
 //            System.out.println(retrievedCustomer.getAccounts().get(0).getName());
 //            customerDAO.delete(retrievedCustomer);
 //        }
+
+        // SCHEDULER
+        final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        scheduledExecutorService.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                System.out.print(new Date());
+            }
+        }, 0, 10, TimeUnit.SECONDS);
 
         final ApiServer server = new ApiServer(
                 ConfigurationManager.
