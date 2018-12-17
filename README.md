@@ -11,6 +11,9 @@
 8. cfg4j for configuration
 9. Junit & Mockito for unit testing
 
+## Deployment
+Using JAR packaging
+
 ## Continues Integration
 I use circleCI for continues integration
 
